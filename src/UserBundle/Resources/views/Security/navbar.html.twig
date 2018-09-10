@@ -1,0 +1,37 @@
+  <nav class=" navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand has-text-centered">
+      <a class="navbar-item nohover" href="{{path('login')}}">
+        <img src="{{asset('img/gesto_icon_with_back.png')}}" alt="logo gesto" width="112" height="28">
+      </a>
+
+      <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a> -->
+    </div>
+
+    <div class="navbar-menu is-active  ">
+      <!-- navbar start, navbar end -->
+      <div class="navbar-start ">
+
+        <a class="navbar-item " href="{{ path(link)}}">
+          <span class="">
+            <i class="{{link_icon}}">&nbsp;</i>
+           {{link_name}}
+          </span>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+     
+        <a class="navbar-item nohover right_image">
+          <img id="logo_text" src="{{asset('img/logo_texte.png')}}" width="112" height="28" alt="Logo">
+        </a>
+         <a class="navbar-item nohover">
+          <img src="{{asset('img/royaume.png')}}" width="112" height="28" alt="Logo">
+        </a>
+        
+      </div>
+    </div>
+  </nav>

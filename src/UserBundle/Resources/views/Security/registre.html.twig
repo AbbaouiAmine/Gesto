@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inscription</title>
+    <link rel="icon" href="{{asset('img/gesto_icon_with_back.png')}}">
+    {# <link rel="stylesheet" href="{{asset('css/bootstrap_from.css')}}"> #}
+  
+    {# <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js') }}"></script> #}
+    {# <script src="{{ asset('js/bootstrap.min.js') }}"></script> #}
+    <!-- css  -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/all.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bulma.css')}}" />
+    <link rel="stylesheet" href="{{ asset('css/style_login.css')}}">
+   <link rel="stylesheet" href="{{ asset('css/style_registre.css')}}">
+   
+    
+</head>
+
+<body>
+
+{% include '@User/Security/navbar.html.twig' with {'link_name': 'Se connecter','link_icon':'fab fa-black-tie','link':'login'} %}
+    <div class="columns x_columns is-vcentered">
+        <div class="column"></div>
+        <div class="column box is-8 columns is-vcentered" id="spec">
+            <div class="column has-text-centered columns">
+                <div class="column"></div>
+                <div class="column  has-text-centered x_img is-6">
+                    <img src="{{ asset('img/logoblackgrand.png')}}" alt="gesto icon">
+                </div>
+                <div class="column"></div>
+            </div>
+            <div class="column has-text-centered columns">
+                <div class="columns">
+
+                    <div class="column"></div>
+                    <div class="column has-text-centered is-12">
+                    <label for="" id="x_label" class="has-text-weight-bold">Créer un compte Gesto</label>
+                   {% for flashMessage in app.session.flashbag.get('error') %}
+
+   
+    <div class="notification is-danger">
+     <button class="delete"></button>
+     {{ flashMessage }}
+     </div>
+
+{% endfor %}
+                    {{ form(newform) }}
+                       {# <form>
+                        <label for="" id="x_label" class="has-text-weight-bold">Créer un compte Gesto</label>
+                       
+                        <input class="input  is-rounded  x_input" type="text" placeholder="Nom">
+
+                        <input class="input x_input is-rounded" type="text" placeholder="Prenom">
+                        <input class="input x_input is-rounded" type="text" placeholder="Email">
+                        <input class="input x_input is-rounded" type="text" placeholder="Tel">
+                        <input class="input button is-success is-rounded" type="submit" value="Valider" id="submit">
+                        </form> #}
+                        <form>
+                        <input id ="pass_" class="button is-text" type="button" value="mot de pass oublier ?">
+                        </form>
+                        <form action="{{ path('login') }}">
+                        <input type="submit" id="return" class="button is-text has-text-centered"  value="Se connecter">
+                        </form>
+                    </div>
+                    <div class="column"></div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="column"></div>
+    </div>
+    {% block javascripts %}
+   <script type="text/javascript" >
+
+    $(window.document).on('click', '.notification > button.delete', function() {
+    $(this).parent().addClass('is-hidden');
+    
+    return false;
+});
+  </script>
+  {% endblock %}
+</body>
+
+</html>

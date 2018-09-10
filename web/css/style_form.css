@@ -1,0 +1,30 @@
+/* .centerall {
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+  .is_90 {
+    width: 90%;
+  }
+
+  .panel-block {
+    align-items: center;
+    color: #363636;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5em 0.75em;
+    flex-direction: column;
+    background-color: #FFF;
+    padding-bottom: 9%;
+    padding-top: 6%;
+  }
+
+#panel_titre{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+  }

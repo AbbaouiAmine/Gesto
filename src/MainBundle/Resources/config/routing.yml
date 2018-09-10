@@ -1,0 +1,32 @@
+Menu:
+    path:     /Menu
+    defaults: { _controller: MainBundle:Default:index }
+
+default_route:
+    path:   /
+    defaults:
+        _controller: UserBundle:Security:login
+add_courrier:
+    path: /add/courrier
+    defaults:
+        _controller: MainBundle:Default:addCourrier
+
+# Categorie
+add_categorie:
+    path: /categorie/add
+    defaults:
+        _controller: MainBundle:Categorie:add
+search_categorie:
+    path: /categorie/search
+    defaults:
+        _controller: MainBundle:Categorie:search
+edit_categorie:
+    path: /categorie/edit
+    defaults:
+        _controller: MainBundle:Categorie:edit
+delete_categorie:
+    path: /categorie/delete
+    defaults:
+        _controller: MainBundle:Categorie:delete
+
+

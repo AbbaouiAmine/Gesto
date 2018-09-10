@@ -1,0 +1,22 @@
+main:
+    resource: "@MainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# begin système_d’authentification
+login:
+    path: /login
+    defaults:
+        _controller: UserBundle:Security:login
+
+login_check:
+    path: /login_check
+
+
+logout:
+    path: /logout
+#end système_d’authentification
+
+registre:
+    path: /registre
+    defaults:
+        _controller: UserBundle:Security:registre

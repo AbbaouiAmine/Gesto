@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr" class="background">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gesto - Accueil </title>
+  <link rel="icon" href="{{asset('img/gesto_icon_with_back.png')}}">
+  <!-- Css includes -->
+  <!-- Bulma -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <link rel="stylesheet" href="{{ asset('css/bulma.css')}}" />
+  <link rel="stylesheet" href="{{ asset('css/all.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/style_login.css')}}">
+
+</head>
+
+<body class="layer">
+  <!--  Nav bar  -->
+{% include('@User/Security/navbar.html.twig') with {'link_name': 'S\'inscrire','link_icon':'fas fa-globe-americas','link':'registre'} %}
+  <div class="columns allspace">
+    <div class="column centerall">
+
+      <div class="columns has-text-left is_100">
+        <div id="title" class="has-text-weight-bold has-text-left">Gestion des courriers administratifs</div>
+      </div>
+      <div class="columns has-text-left is_100">
+        <div id="sub_title">Traitement des courriers d'entreprise avec une prise en main complète de votre suivi</div>
+      </div>
+      <div class="columns has-text-left is_100">
+        <div class="field ">
+          <div class="control">
+          <form action="{{ path('registre')}}">
+            <button type="submit" class="button is-link  has-background-primary is-size-5">Créer un compte</button>
+          </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="column centerall">
+      <div class="panel is_90">
+        <p class="panel-heading has-background-grey-darker has-text-white has-text-centered has-text-weight-semibold">
+          S'identifier
+        </p>
+   
+        <form class="panel-block " action="{{ path('login_check') }}" method="post">
+             {% if error %}
+            
+    <div class="notification is-warning">
+     <button class="delete"></button>
+     {{ error }}
+     </div>
+  {% endif %}
+
+          <div class="field is_90">
+            <label class="label">Matricule</label>
+            <div class="control has-icons-left">
+              <input class="input is-rounded" type="text"  name="_username" placeholder="Matricule">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-success">This username is available</p> -->
+          </div>
+
+          <div class="field is_90">
+            <label class="label">Mot de passe</label>
+            <div class="control has-icons-left">
+              <input type="password" class="input is-rounded" type="text"  name="_password" placeholder="Mot de passe">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-success">This username is available</p> -->
+          </div>
+
+          <div class="field is_90">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox"> Se souvenir de moi
+              </label>
+            </div>
+          </div>
+
+          <div class="field is_90">
+            <div class="control">
+              <button type="submit" class="button is-link is_100 has-background-primary">Se connecter</button>
+            </div>
+          </div>
+          <form action="" method="post">
+            <input id="pass_" class="button is-text" type="button" value="mot de pass oublier ?">
+          </form>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="content has-text-centered columns">
+      <p class="column is-11 margin_null">
+        <strong>Gesto</strong>
+        <span class="has-text-dark">par</span>
+        <a href="https://www.facebook.com/abbaouiamine">Amine ABBAOUI</a>.
+        <span class="has-text-dark"> Le code source est sous licence</span>
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        <span class="has-text-dark">Le contenu du site est sous licence </span>
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        
+      </p>
+      <p  class="column margin_null has-text-left">
+      <button class="delete"></button>
+      <p></p>
+      </p>
+    </div>
+  </footer>
+  
+
+    {% block javascripts %}
+   <script type="text/javascript" >
+
+    $(window.document).on('click', '.notification > button.delete', function() {
+    $(this).parent().addClass('is-hidden');
+    
+    return false;
+});
+   $(window.document).on('click', '.footer > div > p > button.delete', function() {
+    $(this).parent().parent().parent().addClass('is-hidden');
+    
+    return false;
+});
+  </script>
+  {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+{% extends "@Main/Default/index.html.twig" %}
+
+{% block styleform%}
+    <link rel="stylesheet" href="{{asset('css/style_form.css')}}">
+{% endblock %}
+
+{% block menu_panel%}
+
+    <div class="column centerall">
+        <nav class="breadcrumb notification is-primary" aria-label="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="{{path('Menu')}}">Menu</a>
+                </li>
+                <li class="is-active">
+                    <a href="#">Courriers</a>
+                </li>
+                <li class="is-active">
+                    <a href="#" aria-current="page">Chercher</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="panel">
+            <form action="{{path('Menu')}}">
+                <p id="panel_titre" class="panel-heading has-background-grey-darker has-text-white has-text-centered has-text-weight-semibold">
+                    <span>{{title}}</span>
+                    <button type="submit" class="delete"></button>
+                </p>
+            </form>
+            <div class="panel-block is-4 ">
+                {#Tabs  #}
+                <div class="tabs is-centered is-boxed columns_100">
+                    <ul>
+                        <li >
+                            <a href="{{path('add_categorie')}}">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                                </span>
+                                <span>Ajouter</span>
+                            </a>
+                        </li>
+                        <li class="is-active">
+                            <a href="{{path('search_categorie')}}">
+                                <span class="icon is-small">
+                                    <i class="fas fa-search" aria-hidden="true"></i>
+                                </span>
+                                <span>Chercher</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('edit_categorie')}}">
+                                <span class="icon is-small">
+                                    <i class="fas fa-pen" aria-hidden="true"></i>
+                                </span>
+                                <span>Modifier</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('delete_categorie')}}">
+                                <span class="icon is-small">
+                                    <i class="fas fa-times-circle" aria-hidden="true"></i>
+                                </span>
+                                <span>Supprimer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {# End tabs #}
+                <div class="columns columns_100">
+
+                    <div class="column has-centred_elements box">
+                        {% for flashMessage in app.session.flashbag.get('error') %}
+                            <div class="notification is-danger">
+                                <button class="delete"></button>
+                                {{ flashMessage }}
+                            </div>
+
+                        {% endfor %}
+                        <h1 class="has-text-centered is-size-4 has-text-dark  has-text-weight-semibold title_form">Chercher une categori</h1>
+                        <form action="{{path('search_categorie')}}" method="post">
+                            <div class="field has-addons ">
+
+                                <div class="control">
+                                    <input class="input" type="text" name="categorie" placeholder="Trouver une categorie">
+                                </div>
+                                <div class="control">
+                                    <input class="button is-info" type="submit" value="Chercher"/>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% for flashMessage in app.session.flashbag.get('message_add') %}
+
+            <div class="notification is-danger">
+                <button class="delete"></button>
+                {{ flashMessage }}
+            </div>
+
+        {% endfor %}
+
+         {% for flashMessage in app.session.flashbag.get('info') %}
+
+            <div class="notification is-primary">
+                <button class="delete"></button>
+                {{ flashMessage }}
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

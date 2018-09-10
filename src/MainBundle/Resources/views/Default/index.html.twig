@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Menu</title>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <link rel="icon" href="{{asset('img/gesto_icon_with_back.png')}}">
+  <link rel="stylesheet" href="{{asset('css/bulma.css')}}">
+  <link rel="stylesheet" href="{{asset('css/all.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style_menu.css')}}">
+  {% block styleform %}
+  
+  {% endblock %}
+  
+
+</head>
+
+<body>
+  <div class="columns columns_container">
+
+    <div class="column is-2" id="layer_menu">
+      <div class="menu_left">
+        <!-- <div class="columns">
+          Test
+        </div> -->
+       
+          <aside class="menu is-one-fifth">
+            <p class="" id="logo_container">
+                <img src="{{asset('img/gesto_icon_with_back.png')}}" alt="" srcset="" id="img_logo">
+            </p>
+            <ul class="menu-list">
+              <li>
+                <a class="main_item">GestoPrtail</a>
+              </li>
+            </ul>
+            <p class="menu-label buttonmenu ">
+             Courriers
+            </p>
+            <ul class="menu-list is-hidden">
+              <li >
+                  
+                <a href="{{path('add_courrier')}}"> <span class="fas fa-plus-circle"></span> Ajouter un courrier</a>
+              </li>
+              <li>
+                <a class=""> <span class="fas fa-mobile-alt"></span> Manage Your Team</a>
+              </li>
+              <li>
+                <a> <span class="fas fa-file"></span> Invitations</a>
+              </li>
+              <li>
+                <a>Cloud Storage Environment Settings</a>
+              </li>
+              <li>
+                <a>Authentication</a>
+              </li>
+            </ul>
+            <p class="menu-label buttonmenu">
+              Expiditeurs
+            </p>
+            <ul class="menu-list is-hidden">
+              <li>
+                <a><span class="fas fa-plus-circle"></span> Ajouter</a>
+              </li>
+              <li>
+                <a><span class="fas fa-marker"></span> Modifier</a>
+              </li>
+              <li>
+                <a><span class="fas fa-list"></span> Lister</a>
+              </li>
+               <li>
+                <a href="{{path('add_categorie')}}"> <span class="fab fa-keycdn"></span> Categorie</a>
+              </li>
+            </ul>
+          </aside>
+        
+      </div>
+
+    </div>
+    <div class="column " id="column_nav">
+      <nav class=" navbar " role="navigation" aria-label="main navigation">
+        <div class="navbar-brand has-text-centered">
+
+
+          <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a> -->
+        </div>
+
+        <div class="navbar-menu is-active">
+          <!-- navbar start, navbar end -->
+          <div class="navbar-start">
+
+            <a class="navbar-item">
+              <span class="">
+                <i class="fas fa-bookmark">&nbsp;</i>
+
+              </span>
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <a class="navbar-item">
+              <span class="">
+                <i class="fas fa-bell">&nbsp;</i>
+
+              </span>
+            </a>
+            <a class="navbar-item" href="{{path('logout')}}">
+              <span class="">
+                <i class="fas fa-power-off">&nbsp;</i>
+                Se déconnecter
+              </span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="main_panel">
+        <!-- Menu panel -->
+        {% block menu_panel %}
+        {% endblock %}
+
+      </div>
+    </div>
+  </div>
+  {% block javascripts %}
+   <script type="text/javascript" >
+
+    $(window.document).on('click', '.buttonmenu', function() {
+    
+    if($(this).next().is(':hidden'))
+    $(this).next().removeClass('is-hidden');
+    else 
+    $(this).next().addClass('is-hidden');
+    
+    return false;
+});
+    $(window.document).on('click', '.notification > button.delete', function() {
+    $(this).parent().addClass('is-hidden');
+    
+    return false;
+});
+  </script>
+  {% endblock %}
+
+</body>
+
+</html>
